@@ -1,0 +1,4 @@
+[07-Jan-2023 14:59:37 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/ppcg/public_html/app/Http/Controllers/ReportController.php on line 1435
+[06-Apr-2023 22:29:20 Asia/Dhaka] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 1310720 bytes) in /home/ppcg/public_html/vendor/dompdf/dompdf/src/Css/Stylesheet.php on line 1026
+[06-Apr-2023 22:29:51 Asia/Dhaka] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 1310720 bytes) in /home/ppcg/public_html/vendor/dompdf/dompdf/src/Css/Stylesheet.php on line 1026
+[15-Apr-2023 12:50:10 Asia/Dhaka] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/ppcg/public_html/vendor/dompdf/dompdf/src/Cellmap.php on line 458

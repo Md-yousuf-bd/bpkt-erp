@@ -1,0 +1,37 @@
+@media print {
+    html, body {
+        margin: 0;
+        padding: 0;
+        border: 1px solid white;
+        height: 99%;
+        page-break-after: avoid;
+        page-break-before: avoid;
+    }
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+
+@media print {
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+#mybutton{
+    background-color:dodgerblue;
+    border:none;
+
+    color:white;
+}
+.print:last-child {
+    page-break-after: auto;
+}
