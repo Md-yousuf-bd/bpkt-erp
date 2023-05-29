@@ -43,6 +43,19 @@ class BulkEntryController extends Controller
         $data['customer'] = Customer::orderBy('shop_name', 'ASC')->get();
         return view('admin.bulk.index', $data);
     }
+    //new
+    public function tempIndex()
+    {
+        //
+        $data['page_name'] = "New Entry List";
+        $data['breadcumb'] = array(
+            array('Home', 'home'),
+            array('Entry', 'active'),
+            array('List', 'active')
+        );
+        $data['customer'] = Customer::orderBy('shop_name', 'ASC')->get();
+        return view('admin.temp.index', $data);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -65,6 +78,24 @@ class BulkEntryController extends Controller
         $data['meterList'] = Meter::orderBy('meter_no', 'ASC')->get();
 
         return view('admin.bulk.create', $data);
+    }
+    ///new
+    public function tempCreate()
+    {
+        $data['page_name'] = "New Entry temp";
+        $data['breadcumb'] = array(
+            array('Home', 'home'),
+            array(' Entry', 'bulk.index'),
+            array('Add', 'active')
+        );
+        $data['customer'] = Customer::orderBy('shop_name', 'ASC')->get();
+        $data['owner'] = Owner::orderBy('name', 'ASC')->get();
+        $floor = Lookup::where('name', 'Building Floor')->first();
+        $data['floor'] = Lookup::where('parent_id', $floor->id)->get();
+        $data['shopList'] = Asset::orderBy('asset_no', 'ASC')->get();
+        $data['meterList'] = Meter::orderBy('meter_no', 'ASC')->get();
+
+        return view('admin.temp.create', $data);
     }
 
     public function listData(Request $request)
