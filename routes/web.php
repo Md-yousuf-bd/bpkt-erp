@@ -175,7 +175,7 @@ Route::group(['prefix'=>'','middleware'=>['auth','language']],function () {
         Route::get('/fixed-fine_fill',['as'=>'.fixed-fine_fill','middleware'=>['permission:create-billing'],'uses'=>'BillingController2@fillFineAmount']);
         Route::get('/remove-fine-amount',['as'=>'.remove-fine-amount','middleware'=>['permission:delete-fine-amount'],'uses'=>'BillingController2@removeFineAmountView']);
         Route::get('/remove-fine-amount-bill/{id}',['as'=>'.remove-fine-amount-bill','middleware'=>['permission:delete-fine-amount'],'uses'=>'BillingController2@removeFineAmount']);
-        
+
         Route::get('/add',['as'=>'.create','middleware'=>['permission:create-billing'],'uses'=>'BillingController@create']);
         Route::get('/index',['as'=>'.index','middleware'=>['permission:read-billing'],'uses'=>'BillingController@index']);
         Route::post('/list',['as'=>'.list','middleware'=>['permission:read-billing'],'uses'=>'BillingController@listData']);
@@ -226,7 +226,7 @@ Route::group(['prefix'=>'','middleware'=>['auth','language']],function () {
         Route::get('/get-payment-coa/{id}',['as'=>'.get-coa','uses'=>'PayableController@getPaymentLdger']);
         Route::get('/get-vendor-invoice/{id}',['as'=>'.get-vendor-invoice','uses'=>'PayableController@getVendorInvoice']);
     });
-    
+
         Route::group(['prefix'=>'stock','as'=>'stock'],function () {
         Route::get('/add',['as'=>'.create','middleware'=>['permission:create-stock'],'uses'=>'StockController@create']);
         Route::get('/index',['as'=>'.index','middleware'=>['permission:read-stock'],'uses'=>'StockController@index']);
@@ -372,6 +372,22 @@ Route::group(['prefix'=>'','middleware'=>['auth','language']],function () {
         Route::post('/update/{id}',['as'=>'.update','middleware'=>['permission:create-rate'],'uses'=>'RateController@update']);
     });
 
+    Route::group(['prefix'=>'bulk','as'=>'bulk'],function () {
+        Route::get('/add',['as'=>'.create','middleware'=>['permission:create-bulk'],'uses'=>'BulkEntryController@create']);
+        Route::get('/index',['as'=>'.index','middleware'=>['permission:read-bulk'],'uses'=>'BulkEntryController@index']);
+        Route::get('/edit/{id}',['as'=>'.edit','middleware'=>['permission:edit-bulk'],'uses'=>'BulkEntryController@edit']);
+        Route::post('/list',['as'=>'.list','middleware'=>['permission:read-bulk'],'uses'=>'BulkEntryController@listData']);
+        Route::post('/log',['as'=>'.log','middleware'=>['permission:read-bulk'],'uses'=>'BulkEntryController@logData']);
+        Route::get('/log-view',['as'=>'.log-view','middleware'=>['permission:read-bulk'],'uses'=>'BulkEntryController@logView']);
+        Route::post('/show-all-customer',['as'=>'.show-all-customer','uses'=>'BulkEntryController@showCustomer']);
+        Route::post('/store',['as'=>'.store','middleware'=>['permission:create-bulk'],'uses'=>'BulkEntryController@store']);
+        Route::post('/print-options',['as'=>'.print-options','uses'=>'BulkEntryController@printOptions']);
+        Route::post('/update/{id}',['as'=>'.update','middleware'=>['permission:create-bulk'],'uses'=>'BulkEntryController@update']);
+        Route::get('upload-old-invoice',['as'=>'.upload-old-invoice', 'uses'=>'BulkEntryController@makePreviousBill']);
+
+    });
+
+    ////new temp
     Route::group(['prefix'=>'bulk','as'=>'bulk'],function () {
         Route::get('/add',['as'=>'.create','middleware'=>['permission:create-bulk'],'uses'=>'BulkEntryController@create']);
         Route::get('/index',['as'=>'.index','middleware'=>['permission:read-bulk'],'uses'=>'BulkEntryController@index']);

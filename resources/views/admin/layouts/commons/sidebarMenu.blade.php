@@ -394,6 +394,32 @@
                             </ul>
                         </li>
                     @endif
+                    @if(auth()->user()->can('read-bulk') ||
+                                   auth()->user()->can('create-bulk'))
+                        <li>
+                            <a href="#">
+                                <span>New Entery Temp</span>
+                            </a>
+                            <ul>
+                                @if(auth()->user()->can('read-bulk'))
+                                    <li class="">
+                                        <a href="{{route('bulk.index')}}" class="@if(in_array($page_name,['Bulk Entry List'])) active @endif">
+                                            @lang('commons/sidebar_menu.List')
+                                        </a>
+                                    </li>
+                                @endif
+                                @if(auth()->user()->can('create-bulk'))
+                                    <li class="">
+                                        <a href="{{route('bulk.create')}}" class="@if(in_array($page_name,['Bulk Entry'])) active @endif">
+                                            @lang('commons/sidebar_menu.Add')
+                                        </a>
+                                    </li>
+                                @endif
+
+
+                            </ul>
+                        </li>
+                    @endif
                     @if(auth()->user()->can('read-billing') || auth()->user()->can('create-billing'))
                         <li>
                             <a href="#">
